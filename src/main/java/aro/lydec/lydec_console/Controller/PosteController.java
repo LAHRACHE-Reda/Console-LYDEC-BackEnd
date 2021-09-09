@@ -93,4 +93,7 @@ public class PosteController {
         return posteService.getAllPosteByDeleg(deleg);
     }
 
+    @GetMapping("/countByDeleg")
+    public List<Object> getNbrPostesClientsByDeleg(){ return posteService.getNbrPostesClientsByDeleg();}
+
 }

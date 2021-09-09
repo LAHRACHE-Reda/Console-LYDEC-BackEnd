@@ -16,6 +16,7 @@ public interface PosteRepository extends JpaRepository <Poste,Integer> {
     // SQL QUERY
     public static final String FIND_DELEG = "SELECT DISTINCT p.ref_dlg FROM poste p where p.x_gps<>0";
     public static final String FIND_POSTE_DELEG = "SELECT * FROM poste WHERE ref_dlg=? AND x_gps<>0";
+    public static final String FIND_NBR_CLIENTS_POSTES_BY_DELEG = "select ref_dlg, count(*), sum(nb_clients) from poste group by ref_dlg";
 
     List<Poste> findByGpsxIsNot(float x);
 
@@ -31,5 +32,7 @@ public interface PosteRepository extends JpaRepository <Poste,Integer> {
     @Query(value = FIND_POSTE_DELEG, nativeQuery = true)
     List<Poste> findPostesByRef_dlg(int refdeleg);
 
+    @Query(value = FIND_NBR_CLIENTS_POSTES_BY_DELEG, nativeQuery = true)
+    List<Object> findNbrPostesClientsByDeleg();
 
 }

@@ -81,5 +81,7 @@ public class PosteService {
         return posteRepository.findPostesByRef_dlg(refdeleg);
     }
 
+    public List<Object> getNbrPostesClientsByDeleg(){ return posteRepository.findNbrPostesClientsByDeleg();}
+
 
 }
